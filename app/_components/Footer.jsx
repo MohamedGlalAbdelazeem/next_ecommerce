@@ -3,6 +3,7 @@ import Image from "next/image"
 function Footer() {
   return (
     <footer className="bg-primary">
+      
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
     <div className="flex  justify-center">
               <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">

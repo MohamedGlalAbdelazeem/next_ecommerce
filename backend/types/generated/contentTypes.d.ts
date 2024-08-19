@@ -368,6 +368,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     singularName: 'product';
     pluralName: 'products';
     displayName: 'product';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -377,6 +378,10 @@ export interface ApiProductProduct extends Schema.CollectionType {
     description: Attribute.Blocks;
     banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     price: Attribute.Decimal;
+    instantDelivery: Attribute.Boolean;
+    files: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    whatsIncluded: Attribute.Blocks;
+    category: Attribute.Enumeration<['mobile', 'clothes', 'watches']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
