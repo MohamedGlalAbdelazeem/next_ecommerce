@@ -1,13 +1,10 @@
 import { Cairo } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/Header";
-import Hero from "./_components/Hero";
 import Footer from "./_components/Footer";
-import About from "./_components/About";
-import New from "./_components/New";
-import Products from "./_components/Products";
 
 const inter = Cairo({ subsets: ["latin"] });
+
 
 export const metadata = {
   title: "Home Page",
@@ -19,11 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en" dir="rtl">
       <body className={inter.className}>
         <Header/>
-        <Hero/>
-         {children}
-         <About/>
-         <New/>
-         <Products/>
+         {children} 
          <Footer/>
         </body>
     </html>
