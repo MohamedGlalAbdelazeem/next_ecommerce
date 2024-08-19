@@ -381,7 +381,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     instantDelivery: Attribute.Boolean;
     files: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     whatsIncluded: Attribute.Blocks;
-    category: Attribute.Enumeration<['mobile', 'clothes', 'watches']>;
+    category: Attribute.Enumeration<['mobile', 'clothes', 'watches', 'bages']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

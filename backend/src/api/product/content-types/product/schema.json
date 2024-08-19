@@ -36,14 +36,15 @@
       "type": "boolean"
     },
     "files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "whatsIncluded": {
       "type": "blocks"
@@ -53,7 +54,8 @@
       "enum": [
         "mobile",
         "clothes",
-        "watches"
+        "watches",
+        "bages"
       ]
     }
   }
