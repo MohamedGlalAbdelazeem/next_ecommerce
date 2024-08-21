@@ -34,28 +34,28 @@ if (!isMounted) return null;
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
                     <a
-                      className="text-gray-500 text-xl font-bold transition hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
+                      className="text-gray-500 text-lg font-bold transition hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
                       href="/">
                       الصفحة الرئيسية
                     </a>
                   </li>
                   <li>
                     <a
-                      className="text-gray-500 transition text-xl font-bold hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
+                      className="text-gray-500 transition text-lg font-bold hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
                     href="#about" >
                       من نحن 
                     </a>
                   </li>
                   <li>
                     <a
-                      className="text-gray-500 transition text-xl font-bold hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
+                      className="text-gray-500 transition text-lg font-bold hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
                     href="#new" >
                          ما الجديد 
                     </a>
                   </li>
                   <li>
                     <a
-                      className="text-gray-500 transition text-xl font-bold hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
+                      className="text-gray-500 transition text-lg font-bold hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
                       href="#products" >
                       منتجاتنا
                     </a>
@@ -63,7 +63,7 @@ if (!isMounted) return null;
                 
                   <li>
                     <a
-                      className="text-gray-500 transition text-xl font-bold hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
+                      className="text-gray-500 transition text-lg font-bold hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
                       href="#"
                     >
                       تواصل معنا 

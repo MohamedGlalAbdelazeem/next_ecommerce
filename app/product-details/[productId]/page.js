@@ -29,7 +29,7 @@ function ProductDetails({ params }) {
   return (
     <>
       <div className="p-4 lg:max-w-5xl max-w-lg mx-auto">
-        <div className="text-left text-sm">
+        <div className="my-5 text-left text-sm">
           <Link href={"/"} className="bg-primary text-white p-2 rounded-lg">
             العودة للصفحة الرئيسية ◀
           </Link>
