@@ -9,7 +9,7 @@ return (
                 width={"400"}
                 height={"400"}
                 alt="cart image" 
-                className="w-[300px] h-[300px] object-cover object-center group-hover:opacity-75"
+                className="w-[200px] h-[200px] object-cover object-center group-hover:opacity-75"
             />
 
             </div>

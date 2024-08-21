@@ -19,8 +19,8 @@ function ProductListCategory({ productListByCategory }) {
         </div>
           <h3 className="mt-4 text-base text-gray-700">{product?.attributes?.title}</h3>
             <span>{product?.attributes?.description?.children?.text}</span>
-            <p className="mt-1 bg-green-500 text-lg font-bold text-white">{product?.attributes?.price} EGP</p>
-        <button className='text-secondary hover:bg-slate-200 font-bold flex items-center justify-around border-2 p-1 border-secondarytext-secondary w-full text-lg'>
+            <p className="mt-1 bg-red-500 text-lg font-bold text-white">{product?.attributes?.price} EGP</p>
+        <button className='text-secondary hover:bg-green-500 hover:text-white font-bold flex items-center justify-around border-2 p-1 border-secondarytext-secondary w-full text-lg'>
             اضف الي السلة
             <Image
             src={"/cart.png"}
