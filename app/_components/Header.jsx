@@ -29,7 +29,6 @@ if (!isMounted) return null;
                     </span>
               </a>
             </div>
-
             <div className="md:flex md:items-center md:gap-12">
               <nav aria-label="Global" className="hidden md:block">
                 <ul className="flex items-center gap-6 text-sm">
@@ -76,14 +75,14 @@ if (!isMounted) return null;
               <div className="flex items-center gap-4">
                 <div className="sm:flex sm:gap-4">
                   <a
-                    className="rounded-md bg-teal-600 text-xl font-bold px-5 py-2.5  text-white shadow dark:hover:bg-teal-500"
+                    className="rounded-md bg-teal-600 text-lg  px-5 py-2.5  text-white shadow dark:hover:bg-teal-500"
                     href="#"
                   >
                     سجل الدخول 
                   </a>
 
                   <div className="hidden sm:flex">
-                  <a href="#" className="uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-secondary text-secondary dark:text-white hover:bg-secondary hover:text-white text-lg">
+                  <a href="#" className="py-2 px-4 rounded-lg bg-transparent border-2 border-secondary text-secondary dark:text-white hover:bg-secondary hover:text-white text-lg">
                    حساب جديد
                     </a>
                   </div>
@@ -110,7 +109,6 @@ if (!isMounted) return null;
             </div>
           </div>
         </div>
-
         {/* Mobile Menu */}
         {isMenuOpen && (
           <nav className="md:hidden">
@@ -156,7 +154,6 @@ if (!isMounted) return null;
           </nav>
         )}
       </header>
-    
     </>
   );
 }
