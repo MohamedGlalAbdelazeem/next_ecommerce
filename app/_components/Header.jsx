@@ -1,6 +1,7 @@
 "use client"
 import { useState , useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,7 @@ if (!isMounted) return null;
           <div className="flex h-16 items-center justify-between">
            
             <div className="flex-1 md:flex md:items-center md:gap-12">
-              <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+              <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <Image
                         src="/logo.png"
                         width={"55"}
@@ -27,17 +28,17 @@ if (!isMounted) return null;
                       <span className="hidden md:block text-secondary text-3xl font-extrabold whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-secondary via-white to-gray-500">
                         Matjariku
                     </span>
-              </a>
+              </Link>
             </div>
             <div className="md:flex md:items-center md:gap-12">
               <nav aria-label="Global" className="hidden md:block">
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
-                    <a
+                    <Link
                       className="text-gray-500 text-lg font-bold transition hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
                       href="/">
                       الصفحة الرئيسية
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a
@@ -64,7 +65,7 @@ if (!isMounted) return null;
                   <li>
                     <a
                       className="text-gray-500 transition text-lg font-bold hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
-                      href="#"
+                      href="#contact"
                     >
                       تواصل معنا 
                     </a>
