@@ -72,41 +72,55 @@ if (!isMounted) return null;
                   </li>
                 </ul>
               </nav>
-
-              <div className="flex items-center gap-4">
-                <div className="sm:flex sm:gap-4">
-                  <a
-                    className="rounded-md bg-teal-600 text-lg  px-5 py-2.5  text-white shadow dark:hover:bg-teal-500"
-                    href="#"
-                  >
-                    سجل الدخول 
-                  </a>
-
-                  <div className="hidden sm:flex">
-                  <a href="#" className="py-2 px-4 rounded-lg bg-transparent border-2 border-secondary text-secondary dark:text-white hover:bg-secondary hover:text-white text-lg">
-                   حساب جديد
+              {
+                !user ? 
+                (   <div className="flex items-center gap-4">
+                  <div className="sm:flex sm:gap-4">
+                    <a className="rounded-md bg-teal-600 text-lg  px-5 py-2.5  text-white shadow dark:hover:bg-teal-500" href="#">
+                      سجل الدخول 
                     </a>
+  
+                    <div className="hidden sm:flex">
+                    <a href="#" className="py-2 px-4 rounded-lg bg-transparent border-2 border-secondary text-secondary dark:text-white hover:bg-secondary hover:text-white text-lg">
+                     حساب جديد
+                      </a>
+                    </div>
                   </div>
-                </div>
-
-                <div className="block md:hidden">
-                  <button
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="size-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+  
+                  {/* start  list icon */}
+                  <div className="block md:hidden">
+                    <button
+                      onClick={() => setIsMenuOpen(!isMenuOpen)}
+                      className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="size-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                      </svg>
+                    </button>
+                  </div>
+                 {/* end  list icon */}
+                </div>) 
+                : 
+                (
+                  <>
+                   <Image
+                    alt='profile photo'
+                    src={"/profile.png"}
+                    width={"60"}
+                    height={"60"}
+                    className='p-2 cursor-pointer border-4 border-secondary rounded-full'/>
+                    
+                    <button className='font-bold hover:bg-secondary border-2 border-secondary rounded-lg text-white p-2'>تسجيل الخروج</button>
+                  </>
+                )
+              }
+           
             </div>
           </div>
         </div>
