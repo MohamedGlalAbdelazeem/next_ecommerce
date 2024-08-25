@@ -1,9 +1,10 @@
+"use client"
 import Image from "next/image"
-
+import { useUser } from "@clerk/nextjs"
 function Footer() {
-  return (
-    <footer className="bg-primary">
-      
+  const {user} = useUser();
+  return user && (
+    <footer className="bg-primary"> 
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
     <div className="flex  justify-center">
               <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -140,7 +141,7 @@ function Footer() {
       <hr className="mt-6  border-gray-600 rounded-lg mx-auto w-3/4" />
         <p className="text-center text-gray-400 my-6">Copyright 2024 @ Matjariku </p>
     </div>
-  </footer>
+   </footer>
   )
 }
 

@@ -2,18 +2,18 @@
 import { useState , useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useUser } from '@clerk/nextjs';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-
+  const {user} = useUser();
 useEffect(() => {
   setIsMounted(true);
 }, []);
 
 if (!isMounted) return null;
-  return (
-    <>
+  return user && (
       <header className="bg-white dark:bg-primary">
         <div className="mx-auto max-w-screen-2xl px-4 py-3 sm:px-6 ">
           <div className="flex h-16 items-center justify-between">
@@ -155,7 +155,6 @@ if (!isMounted) return null;
           </nav>
         )}
       </header>
-    </>
   );
 }
 
