@@ -5,19 +5,16 @@ import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
 
 function Header( ) {
-  
   const [isLoggedIng, setIsLoggedIng] = useState(false)
   useEffect(() => {  
     setIsLoggedIng(window.location.href.toString().includes('sign-in') || window.location.href.toString().includes('sign-up') )
   }, [])
-  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const {user} = useUser();
 useEffect(() => {
   setIsMounted(true);
 }, []);
-
 const navItems = [
   {
     title:"الصفحة الرئيسية",
@@ -43,14 +40,14 @@ const navItems = [
 if (!isMounted) return null;
   return !isLoggedIng && (
       <header className="bg-white dark:bg-primary">
-        <div className="mx-auto max-w-screen-2xl px-4 py-3 sm:px-6 ">
+        <div className="mx-auto max-w-screen-2xl px-4 py-3 sm:px-9 ">
           <div className="flex h-16 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12">
               <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <Image
                         src="/logo.png"
-                        width={"55"}
-                        height={"55"}
+                        width={"50"}
+                        height={"50"}
                         alt="متجركو لوجو"/>
                       <span className="hidden md:block text-secondary text-3xl font-extrabold whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-secondary via-white to-gray-500">
                         Matjariku
@@ -95,7 +92,7 @@ if (!isMounted) return null;
                   <div className='hidden lg:flex md:flex items-center gap-6'>
                        <UserButton />
                        <div className='flex gap-1'>
-                         <span className='text-white font-bold text-lg'>1</span>
+                         <span className='text-white font-bold text-lg'>(0)</span>
                         <Image
                           src="/trolley.png"
                           width={"45"}
@@ -143,7 +140,21 @@ if (!isMounted) return null;
                 })
               }
               {user && (
-                  <UserButton />
+                <>
+                <UserButton />
+                       <div className='flex gap-1'>
+                         <span className='text-white font-bold text-lg'>(0)</span>
+                        <Image
+                          src="/trolley.png"
+                          width={"45"}
+                          height={"45"}
+                          className='cursor-pointer'
+                          alt="متجركو لوجو"/>
+                       </div>
+                </>
+                
+                
+
                 )}
             </ul>
           </nav>
