@@ -38,8 +38,10 @@ const navItems = [
     href:"#contact",
   },
 ]
+
 if (!isMounted) return null;
-  return !isLoggedIng && (
+ 
+return !isLoggedIng && (
       <header className="bg-white dark:bg-primary">
         <div className="mx-auto max-w-screen-2xl px-4 py-3 sm:px-9 ">
           <div className="flex h-16 items-center justify-between">
