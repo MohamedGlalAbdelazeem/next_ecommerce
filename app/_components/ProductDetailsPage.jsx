@@ -54,7 +54,6 @@ function ProductDetailsPage({productDetails}) {
               width={"30"}
               height={"30"}
               alt="cart image"
-          
             />
           </button>
         </div>

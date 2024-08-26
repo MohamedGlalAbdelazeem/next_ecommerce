@@ -1,6 +1,11 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link";
+import HandelAddToCart from './handelAddToCart'; // Adjust the path as necessary
+
+
 function ProductItem({product}) {
+  const addToCart = HandelAddToCart();
 return ( 
       //  product item in home page
           <Link href={`/product-details/${product.id}`} key={product.id}  className="group cursor-pointer bg-green-50 p-1 rounded-lg">
@@ -15,7 +20,9 @@ return (
                <h3 className="mt-4 text-base text-gray-700">{product?.attributes?.title}</h3>
                 <span>{product?.attributes?.description?.children?.text}</span>
                 <p className="mt-1 bg-green-500 text-lg font-bold text-white">{product?.attributes?.price} EGP</p>
-              <button className='text-secondary hover:bg-slate-200 font-bold flex items-center justify-around border-2 p-1 border-secondarytext-secondary w-full text-lg'>
+              <button
+               onClick={addToCart}
+                className='text-secondary hover:bg-slate-200 font-bold flex items-center justify-around border-2 p-1 border-secondarytext-secondary w-full text-lg'>
                   اضف الي السلة
                   <Image
                     src={"/cart.png"}

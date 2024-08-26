@@ -1,9 +1,14 @@
 "use client"
 import Image from "next/image"
-import { useUser } from "@clerk/nextjs"
+import { useState , useEffect } from "react"
+
 function Footer() {
-  const {user} = useUser();
-  return user && (
+  const [isLoggedIng, setIsLoggedIng] = useState(true);
+  useEffect(() => {  
+    setIsLoggedIng(window.location.href.toString().includes('sign-in') || window.location.href.toString().includes('sign-up') )
+  }, [])
+ 
+  return !isLoggedIng && (
     <footer className="bg-primary"> 
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
     <div className="flex  justify-center">
