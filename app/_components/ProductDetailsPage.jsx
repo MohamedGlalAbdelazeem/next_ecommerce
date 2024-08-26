@@ -1,6 +1,19 @@
 import Image from "next/image";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 function ProductDetailsPage({productDetails}) {
+  const {user} = useUser();
+  const router = useRouter();
+
+  function handelClick() {
+    if (!user) {
+      router.push('/sign-in');
+    } else {
+      console.log("yes");
+    }
+  }
+  
   return (
     <div className="grid items-center justify-center text-center grid-cols-1 lg:grid-cols-2 gap-6 max-lg:gap-12">
       <div className="w-full lg:sticky top-0 sm:flex gap-2">
@@ -47,7 +60,10 @@ function ProductDetailsPage({productDetails}) {
           <p className="text-gray-800 text-xl my-4 font-bold">
             EGP {productDetails?.attributes?.price}
           </p>
-          <button  type="button"  className="w-auto mx-auto mt-8 px-6 py-3 flex justify-around bg-green-500 hover:bg-green-400 text-white text-lg font-bold rounded-md" >
+          <button  
+          onClick={()=>handelClick()}
+          
+          type="button"  className="w-auto mx-auto mt-8 px-6 py-3 flex justify-around bg-green-500 hover:bg-green-400 text-white text-lg font-bold rounded-md" >
             اضف إلي السلة
             <Image
               src={"/cart.png"}
