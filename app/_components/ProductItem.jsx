@@ -10,6 +10,7 @@ return (
                src={product.attributes.banner.data.attributes.url}
                width={"500"}
                height={"500"}
+               priority={true}
                alt="product" 
                className="rounded-lg w-[100%] h-[320px] object-cover object-center group-hover:opacity-80" />
           </div>

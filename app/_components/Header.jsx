@@ -14,39 +14,60 @@ function Header() {
   const { cart, setCart } = useContext(CartContext);
   const {user} = useUser();
 
+  useEffect(() => {
+    user && getCartItems();
+  }, [user])
+  
+  const getCartItems = ()=>{
+    CartApis.getUserCartItems(user.primaryEmailAddress.emailAddress).then(res=>{
+      console.log(res.data.data);
+      res?.data?.data.forEach(cartItem=>{
+        setCart((oldCart)=>[
+          ...oldCart,
+          {
+            id:cartItem.id,
+            product:cartItem?.attributes?.products?.data[0]
+          }
+        ])
+      })
+   
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
   
   useEffect(() => {  
     setIsLoggedIng(window.location.href.toString().includes('sign-in') || window.location.href.toString().includes('sign-up') )
   }, []);
  
-useEffect(() => {
-  setIsMounted(true);
-},[]);
+    useEffect(() => {
+      setIsMounted(true);
+    },[]);
 
-const navItems = [
-  {
-    title:"الصفحة الرئيسية",
-    href:"/",
-  },
-  {
-    title:"  من نحن ",
-    href:"#about",
-  },
-  {
-    title:" ما الجديد  ",
-    href:"#new",
-  },
-  {
-    title:"  منتجاتنا    ",
-    href:"#products",
-  },
-  {
-    title:" تواصل معنا     ",
-    href:"#contact",
-  },
-];
-if (!isMounted) return null;
- 
+    const navItems = [
+      {
+        title:"الصفحة الرئيسية",
+        href:"/",
+      },
+      {
+        title:"  من نحن ",
+        href:"#about",
+      },
+      {
+        title:" ما الجديد  ",
+        href:"#new",
+      },
+      {
+        title:"  منتجاتنا    ",
+        href:"#products",
+      },
+      {
+        title:" تواصل معنا     ",
+        href:"#contact",
+      },
+    ];
+    if (!isMounted) return null;
+    
  
 return !isLoggedIng && (
       <header className="bg-white dark:bg-primary">

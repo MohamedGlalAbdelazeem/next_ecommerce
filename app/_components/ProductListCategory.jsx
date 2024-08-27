@@ -25,6 +25,7 @@ function ProductListCategory({ productListByCategory }) {
               src={product?.attributes?.banner?.data?.attributes?.url}
               width={"600"}
               height={"600"}
+              priority={true}
               alt="cart image" 
               className="w-[100%] h-[250px] object-cover object-center group-hover:opacity-75"
           />
