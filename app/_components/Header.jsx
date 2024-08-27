@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { CartContext } from '../_context/CartContext';
+import CartApis from '../_utils/CartApis';
  
 
 function Header() {
@@ -12,11 +13,12 @@ function Header() {
   const [isLoggedIng, setIsLoggedIng] = useState(false);
   const { cart, setCart } = useContext(CartContext);
   const {user} = useUser();
+
+  
   useEffect(() => {  
     setIsLoggedIng(window.location.href.toString().includes('sign-in') || window.location.href.toString().includes('sign-up') )
   }, []);
-
-
+ 
 useEffect(() => {
   setIsMounted(true);
 },[]);
@@ -43,8 +45,8 @@ const navItems = [
     href:"#contact",
   },
 ];
-
 if (!isMounted) return null;
+ 
  
 return !isLoggedIng && (
       <header className="bg-white dark:bg-primary">
