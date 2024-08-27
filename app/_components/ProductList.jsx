@@ -1,8 +1,5 @@
 import ProductItem from "./ProductItem";
-
 function ProductList({productList}) {
-  
-  
   return (
     <>
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -11,13 +8,9 @@ function ProductList({productList}) {
             {productList.map((item)=>{
                 return(
                     <ProductItem  key={item.id} product={item}/>
-                )
-              })
-            }
+                )})}
         </div>
       </div>
     </>
-  )
-}
-
+)}
 export default ProductList

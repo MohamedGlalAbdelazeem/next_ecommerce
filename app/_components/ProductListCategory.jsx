@@ -18,15 +18,15 @@ function ProductListCategory({ productListByCategory }) {
     {
       productListByCategory.map((product)=>{
         return(
-          <div key={product.id} >
+          <div key={product.id} className="border-2 border-gray-100" >
              <Link href={`/product-details/${product.id}`}  className="w-full h-full group cursor-pointer bg-green-50 p-1 rounded-lg">
-          <div className="w-full  overflow-hidden rounded-lg bg-gray-200 ">
+          <div className="w-full  overflow-hidden rounded-lg bg-gray-300 ">
           <Image 
               src={product?.attributes?.banner?.data?.attributes?.url}
               width={"600"}
               height={"600"}
               alt="cart image" 
-              className="w-[200px] h-[200px] object-cover object-center group-hover:opacity-75"
+              className="w-[100%] h-[250px] object-cover object-center group-hover:opacity-75"
           />
           </div>
             <h3 className="mt-4 text-base text-gray-700">{product?.attributes?.title}</h3>

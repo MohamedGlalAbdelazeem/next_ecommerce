@@ -1,20 +1,26 @@
 "use client"
-import { useState , useEffect } from 'react';
+import { useState , useEffect, useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
+import { CartContext } from '../_context/CartContext';
+ 
 
 function Header() {
-  const [isLoggedIng, setIsLoggedIng] = useState(false)
-  useEffect(() => {  
-    setIsLoggedIng(window.location.href.toString().includes('sign-in') || window.location.href.toString().includes('sign-up') )
-  }, [])
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isLoggedIng, setIsLoggedIng] = useState(false);
+  const { cart, setCart } = useContext(CartContext);
   const {user} = useUser();
+  useEffect(() => {  
+    setIsLoggedIng(window.location.href.toString().includes('sign-in') || window.location.href.toString().includes('sign-up') )
+  }, []);
+
+
 useEffect(() => {
   setIsMounted(true);
 },[]);
+
 const navItems = [
   {
     title:"الصفحة الرئيسية",
@@ -94,7 +100,7 @@ return !isLoggedIng && (
                   <div className='hidden lg:flex md:flex items-center gap-6'>
                        <div className='bg-gray-300 pt-1 px-1 rounded-xl'> <UserButton /></div>
                        <div className='flex gap-1'>
-                         <span className='text-white font-bold text-lg'>(0)</span>
+                         <span className='text-white font-bold text-lg'>({cart?.length})</span>
                         <Image
                           src="/trolley.png"
                           width={"40"}
