@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import CartApis from "../_utils/CartApis";
+ 
 
 function ProductDetailsPage({productDetails}) {
   const {user} = useUser();
@@ -9,8 +11,20 @@ function ProductDetailsPage({productDetails}) {
   function handelClick() {
     if (!user) {
       router.push('/sign-in');
+      
     } else {
-      console.log("yes");
+      const data  = {
+        data:{
+          userName : user.fullName,
+          email : user.primaryEmailAddress.emailAddress,
+          Products:[productDetails?.id]
+        }
+      }
+      CartApis.addToCart(data).then(res=>{
+        console.log(res);
+      }).catch(error=>{
+        console.log(error);
+      })
     }
   }
   
@@ -62,7 +76,6 @@ function ProductDetailsPage({productDetails}) {
           </p>
           <button  
           onClick={()=>handelClick()}
-          
           type="button"  className="w-auto mx-auto mt-8 px-6 py-3 flex justify-around bg-green-500 hover:bg-green-400 text-white text-lg font-bold rounded-md" >
             اضف إلي السلة
             <Image

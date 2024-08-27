@@ -1,11 +1,10 @@
 "use client"
-
 import { useState , useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
 
-function Header( ) {
+function Header() {
   const [isLoggedIng, setIsLoggedIng] = useState(false)
   useEffect(() => {  
     setIsLoggedIng(window.location.href.toString().includes('sign-in') || window.location.href.toString().includes('sign-up') )
@@ -15,7 +14,7 @@ function Header( ) {
   const {user} = useUser();
 useEffect(() => {
   setIsMounted(true);
-}, []);
+},[]);
 const navItems = [
   {
     title:"الصفحة الرئيسية",
@@ -37,7 +36,7 @@ const navItems = [
     title:" تواصل معنا     ",
     href:"#contact",
   },
-]
+];
 
 if (!isMounted) return null;
  
@@ -49,12 +48,12 @@ return !isLoggedIng && (
               <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <Image
                         src="/logo.png"
-                        width={"50"}
-                        height={"50"}
+                        width={"40"}
+                        height={"40"}
                         alt="متجركو لوجو"/>
                       <span className="hidden md:block text-secondary text-3xl font-extrabold whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-secondary via-white to-gray-500">
                         Matjariku
-                    </span>
+                     </span>
               </Link>
             </div>
             <div className="md:flex md:items-center md:gap-12">
@@ -63,7 +62,7 @@ return !isLoggedIng && (
                 {navItems.map((item , index)=>{
                   return(
                     <li key={index}>
-                    <Link className="text-gray-500 text-xl font-bold transition hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
+                    <Link className="text-gray-500 text-lg font-bold transition hover:text-gray-500/75 dark:text-white dark:hover:text-secondary"
                         href={item.href}>
                           {item.title}
                       </Link>
@@ -93,13 +92,13 @@ return !isLoggedIng && (
                 : 
                 (
                   <div className='hidden lg:flex md:flex items-center gap-6'>
-                       <UserButton />
+                       <div className='bg-gray-300 pt-1 px-1 rounded-xl'> <UserButton /></div>
                        <div className='flex gap-1'>
                          <span className='text-white font-bold text-lg'>(0)</span>
                         <Image
                           src="/trolley.png"
-                          width={"45"}
-                          height={"45"}
+                          width={"40"}
+                          height={"40"}
                           className='cursor-pointer'
                           alt="متجركو لوجو"/>
                        </div>
@@ -144,20 +143,17 @@ return !isLoggedIng && (
               }
               {user && (
                 <>
-                <UserButton />
+                   <UserButton />
                        <div className='flex gap-1'>
                          <span className='text-white font-bold text-lg'>(0)</span>
-                        <Image
-                          src="/trolley.png"
-                          width={"45"}
-                          height={"45"}
-                          className='cursor-pointer'
-                          alt="متجركو لوجو"/>
+                            <Image
+                              src="/trolley.png"
+                              width={"45"}
+                              height={"45"}
+                              className='cursor-pointer'
+                              alt="متجركو لوجو"/>
                        </div>
                 </>
-                
-                
-
                 )}
             </ul>
           </nav>
