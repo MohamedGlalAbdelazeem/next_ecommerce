@@ -5,13 +5,12 @@ import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { CartContext } from '../_context/CartContext';
 import CartApis from '../_utils/CartApis';
-import Cart from './Cart'; // Import the Cart component
- 
+import Cart from './Cart';  
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isLoggedIng, setIsLoggedIng] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false); // State for cart visibility
+  const [isCartOpen, setIsCartOpen] = useState(false);  
   const { cart, setCart } = useContext(CartContext);
   const { user } = useUser();
 
@@ -21,7 +20,6 @@ function Header() {
   
   const getCartItems = () => {
     CartApis.getUserCartItems(user.primaryEmailAddress.emailAddress).then(res => {
-      console.log(res.data.data);
       res?.data?.data.forEach(cartItem => {
         setCart(oldCart => [
           ...oldCart,

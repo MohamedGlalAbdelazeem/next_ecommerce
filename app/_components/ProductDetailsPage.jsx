@@ -4,14 +4,16 @@ import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from 'react-toastify';
 import CartApis from "../_utils/CartApis";
+import { useContext } from "react";
+import { CartContext } from "../_context/CartContext";
 
 
 function ProductDetailsPage({productDetails}) {
-
- 
-  
+  const {cart , setCart} = useContext(CartContext);
   const {user} = useUser();
   const router = useRouter();
+  console.log("this is my cart",cart);
+  
   function handelClickToAddCart() {
     if (!user) {
       router.push('/sign-in');
@@ -23,10 +25,15 @@ function ProductDetailsPage({productDetails}) {
           products:[productDetails?.id]
         }
       }
-        
-
-      CartApis.addToCart(data).then(res=>{
-        console.log(res);
+        CartApis.addToCart(data).then(res=>{
+        console.log("response ya man",res?.data);
+        setCart(oldCart=>[
+          ...oldCart,
+          {
+            id:res?.data?.data?.id,
+            productDetails
+          }
+        ])
       }).catch(error=>{
         console.log(error);
       })
