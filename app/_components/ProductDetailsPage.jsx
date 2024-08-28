@@ -1,41 +1,36 @@
-import { useContext } from "react";
+
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import CartApis from "../_utils/CartApis"; 
-import { CartContext } from "../_context/CartContext";
 import { ToastContainer, toast } from 'react-toastify';
+import CartApis from "../_utils/CartApis";
 
 
 function ProductDetailsPage({productDetails}) {
-  const { cart, setCart } = useContext(CartContext);
+
  
   
   const {user} = useUser();
   const router = useRouter();
-  function handelClick() {
+  function handelClickToAddCart() {
     if (!user) {
       router.push('/sign-in');
     } else {
-      const data = {
-        data: {
-          userName : user.fullName,
-          email : user.primaryEmailAddress.emailAddress,
-          Products:[productDetails?.id]
-        }}
-       CartApis.addToCart(data).then(res=>{
-        console.log(res.data.data);
-        toast("تم  إضافة  المنتج  بنجاح", { type: "success" });
-        setCart(oldCart=>[ ...oldCart,
-            {
-              id:res?.data?.data?.id,
-              productDetails
-            }
-          ])
+      const data =  {
+        data:{
+          username:user.fullName,
+          email:user.primaryEmailAddress.emailAddress,
+          products:[productDetails?.id]
+        }
+      }
+        
+
+      CartApis.addToCart(data).then(res=>{
+        console.log(res);
       }).catch(error=>{
-        alert(error);
-      })} 
-    }
+        console.log(error);
+      })
+    }}
   return (
     <div className="grid items-center justify-center text-center grid-cols-1 lg:grid-cols-2 gap-6 max-lg:gap-12">
       <div className="w-full lg:sticky top-0 sm:flex gap-2">
@@ -83,7 +78,7 @@ function ProductDetailsPage({productDetails}) {
             EGP {productDetails?.attributes?.price} 
           </p>
           <button  
-            onClick={()=>handelClick()}
+            onClick={()=>handelClickToAddCart()}
             type="button"  className="w-auto mx-auto mt-8 px-6 py-3 flex justify-around bg-green-500 hover:bg-green-400 text-white text-lg font-bold rounded-md" >
             اضف إلي السلة
             <Image
