@@ -12,7 +12,6 @@ function ProductDetailsPage({productDetails}) {
   const {cart , setCart} = useContext(CartContext);
   const {user} = useUser();
   const router = useRouter();
-  console.log("this is my cart",cart);
   
   function handelClickToAddCart() {
     if (!user) {
@@ -26,7 +25,7 @@ function ProductDetailsPage({productDetails}) {
         }
       }
         CartApis.addToCart(data).then(res=>{
-        console.log("response ya man",res?.data);
+          toast(   "تم إضافة المنتج بنجاح", {type:"success"})
         setCart(oldCart=>[
           ...oldCart,
           {

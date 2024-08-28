@@ -1,49 +1,31 @@
-import React from 'react';
+import React, { useContext , useEffect} from 'react';
+import { CartContext } from '../_context/CartContext';
 
-function Cart({ isOpen, cart }) {
-    
+function Cart({ isOpen}) {
+
+  
+  const {cart} = useContext(CartContext);
+ 
   if (!isOpen) return null;
-
   return (
     <div className="absolute left-11 top-16 mt-2 w-80 bg-white border border-gray-300 shadow-lg p-4 z-50">
       <h2 className="font-semibold text-center text-lg mb-2">المنتجات التي تم شراؤها</h2>
       <ul className="overflow-y-auto max-h-64">
-        {["A"].map((item, index) => {
+        {cart.map((item, index) => {
           return (
-            <li key={index} className="flex items-center gap-4 mb-2">
+            <li key={index} className="my-4 bg-slate-200 flex items-center p-2">
               <img
-                src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                alt=""
-                className="h-16 w-16 rounded object-cover"
+                src={item?.product?.attributes?.banner?.data?.attributes?.url}
+                alt="product image"
+                className="ml-2 h-20 w-20 rounded object-cover"
               />
 
-              <div>
-                <h3 className="text-sm text-gray-900">Basic Tee 6-Pack</h3>
-                <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
-                  <div>
-                    <dt className="inline">Size:</dt>
-                    <dd className="inline">XXS</dd>
-                  </div>
-
-                  <div>
-                    <dt className="inline">Color:</dt>
-                    <dd className="inline">White</dd>
-                  </div>
-                </dl>
+              <div className=''>
+                <h3 className="text-sm text-gray-900">{item?.product?.attributes?.title}</h3>
+                <h4 className='my-2 text-sm bg-green-500 text-white text-center'>{item?.product?.attributes?.price} EGP</h4>
               </div>
 
               <div className="flex flex-1 items-center justify-end gap-2">
-                <form>
-                  <label htmlFor={`LineQty${index}`} className="sr-only">Quantity</label>
-                  <input
-                    type="number"
-                    min="1"
-                    value="1"
-                    id={`LineQty${index}`}
-                    className="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                  />
-                </form>
-
                 <button className="text-gray-600 transition hover:text-red-600">
                   <span className="sr-only">Remove item</span>
                   <svg
@@ -67,11 +49,10 @@ function Cart({ isOpen, cart }) {
         })}
       </ul>
       <div className="space-y-4 text-center">
-      <a
-        href="#"
+      <a href="#"
         className="block rounded border border-gray-600 px-5 py-3 text-sm text-gray-600 transition hover:ring-1 hover:ring-gray-400"
       >
-        View my cart (2)
+        عربة التسوق ({cart?.length})
       </a>
 
       <a
