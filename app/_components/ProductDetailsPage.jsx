@@ -17,26 +17,31 @@ function ProductDetailsPage({productDetails}) {
     if (!user) {
       router.push('/sign-in');
     } else {
-      const data =  {
-        data:{
-          username:user.fullName,
-          email:user.primaryEmailAddress.emailAddress,
-          products:[productDetails?.id]
-        }
-      }
-        CartApis.addToCart(data).then(res=>{
-          toast(   "تم إضافة المنتج بنجاح", {type:"success"})
-        setCart(oldCart=>[
-          ...oldCart,
-          {
-            id:res?.data?.data?.id,
-            productDetails
-          }
-        ])
-      }).catch(error=>{
-        console.log(error);
-      })
-    }}
+      const data = {
+        data: {
+          username: user.fullName,
+          email: user.primaryEmailAddress.emailAddress,
+          products: [productDetails?.id],
+        },
+      };
+      CartApis.addToCart(data)
+        .then((res) => {
+          toast('تم إضافة المنتج بنجاح', { type: 'success' });
+          setCart((oldCart) => [
+            ...oldCart,
+            {
+              id: res?.data?.data?.id,
+              productDetails,
+            },
+          ]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+  
+
   return (
     <div className="grid items-center justify-center text-center grid-cols-1 lg:grid-cols-2 gap-6 max-lg:gap-12">
       <div className="w-full lg:sticky top-0 sm:flex gap-2">
