@@ -6,7 +6,9 @@ const getUserCartItems = (email) =>
       `carts?populate[products][populate]=banner&filters[email][$eq]=${email}`
     );
 
+    const deletCartItem = (id) => axiosClient.delete(`/carts/${id}`)
 export default {
     addToCart,
     getUserCartItems,
+    deletCartItem
 };
