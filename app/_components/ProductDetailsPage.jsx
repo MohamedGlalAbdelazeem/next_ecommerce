@@ -40,7 +40,6 @@ function ProductDetailsPage({productDetails}) {
         });
     }
   }
-  
 
   return (
     <div className="grid items-center justify-center text-center grid-cols-1 lg:grid-cols-2 gap-6 max-lg:gap-12">

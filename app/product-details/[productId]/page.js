@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
+
 import { useEffect, useState } from "react";
 import ProductsApis from "@/app/_utils/ProductsApis";
 import ProductListCategory from "@/app/_components/ProductListCategory";

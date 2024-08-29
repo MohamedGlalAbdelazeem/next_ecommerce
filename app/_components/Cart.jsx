@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../_context/CartContext';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Cart() {
   const { cart } = useContext(CartContext);
@@ -30,9 +31,9 @@ function Cart() {
         ))}
       </ul>
       <div className="space-y-4 text-center">
-        <a  href="#"  className="block rounded border border-gray-600 px-5 py-3 text-sm text-gray-600 transition hover:ring-1 hover:ring-gray-400"  >
+        <Link  href="/cart"  className="block rounded border border-gray-600 px-5 py-3 text-sm text-gray-600 transition hover:ring-1 hover:ring-gray-400"  >
           عربة التسوق ({cart?.length})
-        </a>
+        </Link>
       </div>
     </div>
   );
