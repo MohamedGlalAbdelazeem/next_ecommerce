@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { CartContext } from '../_context/CartContext';
 import Image from 'next/image';
 
-
 function Cart({ isOpen }) {
   const { cart } = useContext(CartContext);
+  
   if (!isOpen) return null;
   return (
     <div className="absolute left-11 top-16 mt-2 w-80 bg-white border border-gray-300 shadow-lg p-4 z-50">
