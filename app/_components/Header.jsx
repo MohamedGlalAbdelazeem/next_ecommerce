@@ -102,9 +102,9 @@ function Header() {
                     height={"40"}
                     className='cursor-pointer'
                     alt="متجركو لوجو"
-                    onClick={() => setIsCartOpen(!isCartOpen)} // Toggle the cart box
+                    onClick={() => setIsCartOpen(!isCartOpen)} 
                   />
-                  <Cart isOpen={isCartOpen} cart={cart} /> {/* Cart Component */}
+                 { isCartOpen && <Cart /> }
                 </div>
               </div>
             )}

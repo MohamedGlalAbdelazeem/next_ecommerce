@@ -3,10 +3,9 @@ import React, { useContext } from 'react';
 import { CartContext } from '../_context/CartContext';
 import Image from 'next/image';
 
-function Cart({ isOpen }) {
+function Cart() {
   const { cart } = useContext(CartContext);
-  
-  if (!isOpen) return null;
+
   return (
     <div className="absolute left-11 top-16 mt-2 w-80 bg-white border border-gray-300 shadow-lg p-4 z-50">
       <h2 className="font-semibold text-center text-lg mb-2">المنتجات التي تم شراؤها</h2>
@@ -16,8 +15,8 @@ function Cart({ isOpen }) {
             <Image
                  width={"200"}
                  height={"200"}
-                src={item?.productDetails?.attributes?.banner?.data?.attributes?.url}
-                alt="product image"
+                 src={item?.productDetails?.attributes?.banner?.data?.attributes?.url}
+                 alt="product image"
                 className="ml-2 h-20 w-20 rounded object-cover" />
             <div className="w-full">
               <h3 className="text-center text-sm text-gray-900">
