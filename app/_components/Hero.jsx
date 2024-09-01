@@ -6,11 +6,11 @@ function Hero() {
     <div className="bg-white dark:bg-gray-800 flex  relative z-20 items-center overflow-hidden">
       <div className="container mx-auto px-6 flex py-32 sm:py-16 lg:py-26">
             <div className="lg:w-2/5 flex justify-center text-center items-center flex-col relative z-20">
-                <span className="w-20 h-2 bg-gray-800 dark:bg-white "></span>
+                <span className="w-40 h-1 mb-5 bg-gray-800 dark:bg-white "></span>
                 <h1 className="font-bebas uppercase mb-3 text-3xl leading-normal lg:leading-normal sm:text-6xl font-black flex flex-col dark:text-white text-gray-800">
                 كن دائمًا في طليعة التسوق الإلكتروني
                 </h1>
-              <span className="w-20 h-2 bg-gray-800 dark:bg-white "></span>
+              <span className="w-20 h-1 bg-gray-800 mb-5 dark:bg-white "></span>
                 <p className="text-xl text-gray-400 leading-9">
                 استمتع بتجربة تسوق فريدة وسريعة مع متجر "متجركو". نقدم لك أفضل المنتجات بأعلى جودة وخدمة سريعة لتلبية احتياجاتك بشكل مثالي.
                  </p>

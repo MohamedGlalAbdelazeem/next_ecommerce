@@ -24,10 +24,19 @@ function Footer() {
               </a>
             </div>
   
-      <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-400">
-      تجربة تسوق سلسة ومتكاملة. نسعى لتقديم أفضل المنتجات بأسرع وقت وبأعلى جودة، لتكون تجربتك معنا لا تُنسى.
-      </p>
-  
+        <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-400">
+        تجربة تسوق سلسة ومتكاملة. نسعى لتقديم أفضل المنتجات بأسرع وقت وبأعلى جودة، لتكون تجربتك معنا لا تُنسى.
+        </p>
+        <div className="flex justify-center my-6 rounded-2xl ">
+              <Image
+                  src="/payment_methods.jpg"
+                  width={"550"}
+                  height={"550"}
+                  alt="متجركو لوجو"
+                    className="rounded-2xl "
+                  />
+        </div>
+    
       <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
         <li>
           <a className="text-gray-300  transition hover:text-gray-700/75" href="#"> من نحن  </a>
