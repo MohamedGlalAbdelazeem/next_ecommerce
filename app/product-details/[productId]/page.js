@@ -2,9 +2,9 @@
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
-import ProductsApis from "@/app/_utils/ProductsApis";
-import ProductListCategory from "@/app/_components/ProductListCategory";
-import ProductDetailsPage from "@/app/_components/ProductDetailsPage";
+import ProductsApis from "../../_utils/ProductsApis"
+import ProductListCategory from "../../_components/ProductListCategory";
+import ProductDetailsPage from "../../_components/ProductDetailsPage";
 
 function ProductDetails({ params }) {
   const [productDetails, setProductDetails] = useState({});
@@ -43,7 +43,7 @@ function ProductDetails({ params }) {
              <ProductListCategory productListByCategory={productListByCategory}/>
         </div>
       </div>
-        
+
       </div>
     </>
   );

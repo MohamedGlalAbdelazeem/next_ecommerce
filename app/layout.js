@@ -2,13 +2,13 @@
 import { CartContext } from './_context/CartContext';
 import { useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-import {ClerkProvider,} from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs';
 import { Cairo } from "next/font/google";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
-const inter = Cairo({ subsets: ["latin"] });
 import "./globals.css";
 
+const cairo = Cairo({ subsets: ["latin"] });
 
  const metadata = {
   title: "متجركو",
@@ -19,15 +19,15 @@ export default function RootLayout({ children }) {
   const [cart, setCart] = useState([]);
   return (
     <ClerkProvider>
-       <CartContext.Provider value={{ cart, setCart }}>
-            <html lang="en" dir="rtl">
-                <body className={inter.className}>
-                    <Header/>
-                    {children} 
-                    <Footer/>
-                </body>
-            </html>
-        </CartContext.Provider>
+      <CartContext.Provider value={{ cart, setCart }}>
+        <html lang="en" dir="rtl">
+          <body className={`cairo-font ${cairo.className}`}>
+            <Header />
+            {children}
+            <Footer />
+          </body>
+        </html>
+      </CartContext.Provider>
     </ClerkProvider>
   );
 }

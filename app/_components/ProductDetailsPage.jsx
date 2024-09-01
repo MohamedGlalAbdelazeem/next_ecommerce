@@ -1,4 +1,4 @@
-
+"use client"
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import CartApis from "../_utils/CartApis";
 import { useContext } from "react";
 import { CartContext } from "../_context/CartContext";
+ 
 
 
 function ProductDetailsPage({productDetails}) {
