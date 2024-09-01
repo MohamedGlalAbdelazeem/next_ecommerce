@@ -5,10 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import CartApis from "../_utils/CartApis";
+import { useRouter } from "next/navigation";
 
 function Page() {
     const { cart, setCart } = useContext(CartContext); 
-
+    const router = useRouter()
     function getTotalAmount() {
         let totalAmount = 0;
         cart.forEach(item => {
@@ -88,10 +89,13 @@ function Page() {
                                             <h2 className="text-lg text-green-500 font-bold">{getTotalAmount()} EGP</h2>
                                         </div>
                                         <div className="flex justify-end">
-                                            <Link href="/checkout" className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600">
+                                            <button  
+                                            onClick={()=>router.push(`/checkout?amount=${getTotalAmount()}`)}
+                                            className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600">
                                                 اذهب للدفع 
-                                            </Link>
+                                            </button>
                                         </div>
+                                        <p className="text-red-600">كل المتجات التي تم شراؤها سوف يتم إرسالها إلي البريد الخاص بك</p>
                                     </div>
                                 </div>
                             </>
