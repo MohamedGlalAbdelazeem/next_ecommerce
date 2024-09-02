@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import { useContext, useState } from 'react';
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
 import { CartContext } from '../../_context/CartContext';
@@ -10,6 +11,13 @@ import CartApis from '../../_utils/CartApis';
 const CheckoutForm = ({amount}) => {
   const {cart , setCart } = useContext(CartContext);
   const {user} = useUser();
+
+  const sendEmail = async()=>{
+    const res = await fetch('api/send-email',{
+      method:'POST',
+       
+    })
+  }
 
   const stripe = useStripe();
   const elements = useElements();
@@ -36,6 +44,7 @@ const CheckoutForm = ({amount}) => {
 		}
 		
     createOrder();
+    sendEmail();
     // Trigger form validation and wallet collection
 		const { error: submitError } = await elements.submit();
 		if (submitError) {
@@ -71,6 +80,7 @@ const CheckoutForm = ({amount}) => {
     }
     setLoading(false);
   };
+
   function createOrder() {
     let productsId = [];
     cart.forEach(element =>{
@@ -89,14 +99,12 @@ const CheckoutForm = ({amount}) => {
         cart.forEach(element=>{
           CartApis.deletCartItem(element?.id).then(result=>{
             console.log(result);
-            
           })
         })
         
       }
     }).catch(error=>{
       console.log(error);
-      
     })
   }
   return (
