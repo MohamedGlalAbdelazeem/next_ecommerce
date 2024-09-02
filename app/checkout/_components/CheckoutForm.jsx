@@ -1,8 +1,16 @@
 'use client'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
+import { CartContext } from '../../_context/CartContext';
+import { useUser } from '@clerk/nextjs';
+import OrdersApis from '../../_utils/OrdersApis';
+import CartApis from '../../_utils/CartApis';
+ 
   
 const CheckoutForm = ({amount}) => {
+  const {cart , setCart } = useContext(CartContext);
+  const {user} = useUser();
+
   const stripe = useStripe();
   const elements = useElements();
  
@@ -27,7 +35,7 @@ const CheckoutForm = ({amount}) => {
 			setErrorMessage(error.message)
 		}
 		
-	
+    createOrder();
     // Trigger form validation and wallet collection
 		const { error: submitError } = await elements.submit();
 		if (submitError) {
@@ -63,7 +71,34 @@ const CheckoutForm = ({amount}) => {
     }
     setLoading(false);
   };
-
+  function createOrder() {
+    let productsId = [];
+    cart.forEach(element =>{
+      return productsId.push(element?.product?.id)
+    })
+    const data = {
+      data:{
+        email:user.primaryEmailAddress.emailAddress,
+        username:user.fullName,
+        amount:amount,
+        products:productsId
+      }
+    }
+    OrdersApis.createOrder(data).then(res=>{
+      if (res) {
+        cart.forEach(element=>{
+          CartApis.deletCartItem(element?.id).then(result=>{
+            console.log(result);
+            
+          })
+        })
+        
+      }
+    }).catch(error=>{
+      console.log(error);
+      
+    })
+  }
   return (
     <form 
     onSubmit={handleSubmit}
